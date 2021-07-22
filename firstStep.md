@@ -16,3 +16,5 @@
 ├── tsconfig.json // TypeScript 配置文件
 ├── vite.config.ts // Vite 配置文件
 └── package.json
+
+<!-- 解决eslint 不能解释import 引用地址 https://www.cnblogs.com/Jingge/p/14927175.html -->
