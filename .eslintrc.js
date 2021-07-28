@@ -45,6 +45,7 @@ module.exports = {
     "import/no-absolute-path": "off",
     // "import/no-extraneous-dependencies": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "import/no-useless-path-segments": "off",
     "no-param-reassign": [
       "error",
       {
@@ -55,6 +56,7 @@ module.exports = {
           "e" // for e.returnvalue
         ]
       }
-    ]
+    ],
+    "max-len": ["error", { code: 300 }]
   }
 };
