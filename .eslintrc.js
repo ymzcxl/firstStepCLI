@@ -30,33 +30,31 @@ module.exports = {
     "import/no-unresolved": "off",
     "no-console": "off",
     "comma-dangle": [2, "never"],
-    quotes: [2, "double"] // 2 违反错误报错并阻止进程
-    // 'import/extensions': [
-    //   'error',
-    //   'always',
+    quotes: [2, "double"], // 2 违反错误报错并阻止进程
+    // "import/extensions": [
+    //   "error",
+    //   "always",
     //   {
-    //     js: 'never',
-    //     mjs: 'never',
-    //     jsx: 'never',
-    //     ts: 'never',
-    //     tsx: 'never'
+    //     js: "never",
+    //     mjs: "never",
+    //     jsx: "never",
+    //     ts: "never",
+    //     tsx: "never"
     //   }
     // ],
-    // "quotes": [1, "double"],
-    // 'import/extensions': 'off',
-    // 'import/no-absolute-path': 'off',
-    // 'import/no-extraneous-dependencies': 'off',
-    // 'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    // 'no-param-reassign': [
-    //   'error',
-    //   {
-    //     props: true,
-    //     ignorePropertyModificationsFor: [
-    //       'state', // for vuex state
-    //       'acc', // for reduce accumulators
-    //       'e' // for e.returnvalue
-    //     ]
-    //   }
-    // ]
+    "import/no-absolute-path": "off",
+    // "import/no-extraneous-dependencies": "off",
+    "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "no-param-reassign": [
+      "error",
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          "state", // for vuex state
+          "acc", // for reduce accumulators
+          "e" // for e.returnvalue
+        ]
+      }
+    ]
   }
 };

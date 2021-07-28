@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div class="father">
+      <div class="ceshi">
+        <img width="100" height="100" src="./image/shadow.png" alt="">
+      </div>
+  </div>
 </template>
 
 <script>
@@ -23,4 +27,16 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.father{
+  background: #008c8c;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+.ceshi{
+  background: #fff;
+  width: 200px;
+  height: 200px;
+}
+</style>

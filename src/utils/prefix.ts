@@ -1,3 +1,3 @@
-const fsName = 'fs-'
+const fsName = "fs-";
 
-export default fsName
+export default fsName;
