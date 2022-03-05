@@ -11,6 +11,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src")
     }
   },
+  css: {
+    // css预处理器
+    preprocessorOptions: {
+      scss: {
+        charset: false,
+        additionalData: "@import \"./src/style/common.scss\";"
+      }
+    }
+  },
   publicDir: "public",
   define: {
     "process.env": {}

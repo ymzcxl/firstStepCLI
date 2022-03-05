@@ -45,6 +45,15 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/axios/Axios.vue") // 懒加载组件
   }
 ];
+// 引入modules文件夹的路由js
+const files = import.meta.globEager("./modules/*.ts");
+console.log("router files:::", files);
+
+Object.keys(files).forEach((key) => {
+  if (Object.prototype.hasOwnProperty.call(files, key)) {
+    routes.push(...files[key].default);
+  }
+});
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

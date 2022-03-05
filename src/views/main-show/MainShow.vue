@@ -1,5 +1,6 @@
 <template>
   <div class="main-show-module">
+    <div class="show background-color"></div>
     <section>
       <fs-tab-menu></fs-tab-menu>
     </section>
@@ -39,6 +40,10 @@ export default {
   display: flex;
   width: 1200px;
   margin: auto;
+}
+.show{
+  width: 100px;
+  height: 100px;
 }
 
 </style>
