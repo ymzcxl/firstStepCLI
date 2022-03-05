@@ -12,8 +12,8 @@
 <script>
 import fsName from "@/utils/prefix";
 import { computed, reactive, toRefs } from "vue";
-// import TabMenu from "../../components/tab-menu/TabMenu.vue";
-import TabMenu from "@/components/tab-menu/TabMenu";
+import TabMenu from "../../components/tab-menu/TabMenu.vue";
+// import TabMenu from "@/components/tab-menu/TabMenu";
 
 export default {
   name: `${fsName}main-show`,

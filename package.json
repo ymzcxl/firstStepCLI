@@ -2,9 +2,9 @@
   "name": "firststep",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite --host 0.0.0.0 --host 0.0.0.0",
+    "serve": "vite --host",
     "prepare": "husky install"
   },
   "dependencies": {
