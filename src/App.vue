@@ -1,15 +1,26 @@
 <template>
-  <router-view />
+  <div>
+    <router-view>
+    </router-view>
+    <MainTabBar v-if="true"></MainTabBar>
+    <div>{{storeState}}</div>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup>
+import MainTabBar from "@/components/common/tabbar/TabBar.vue";
+import { useStore, mapState } from "vuex";
+import { computed } from "vue";
 
-export default defineComponent({
-  name: "App",
-  components: {
-  }
+const store = useStore();
+const storeStateFns = mapState(["tabShow", "date"]);
+const storeState = {};
+
+Object.keys(storeStateFns).forEach((fnKey) => {
+  const fn = storeStateFns[fnKey].bind({ $store: store });
+  storeState[fnKey] = computed(fn);
 });
+
 </script>
 
 <style>

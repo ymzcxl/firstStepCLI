@@ -1,32 +1,7 @@
-// import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-
-// const routes: Array<RouteRecordRaw> = [
-
-// ];
-// // const router = createRouter({
-// //   history: createWebHistory(process.env.BASE_URL),
-// //   scrollBehavior(to, from, savedPosition) {
-// //     // 只有调用了history.pushState()的时候才会触发这个方法，也就是当我们点击浏览器中的“<-” "->"的时候
-// //     // 判断如果滚动条的位置存在直接返回当前位置，否则返回到起点
-// //     // savedPosition只有当用户点击前进后退，或者go(-1)的时候才会调用
-// //     if (savedPosition) {
-// //       return savedPosition;
-// //     }
-// //     return { x: 0, y: 0 };
-// //   },
-// //   routes
-// // });
-
-// const router = createRouter({
-//   history: createWebHashHistory(),
-//   routes
-// });
-
-// export default router;
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-
 import MainShow from "@/views/main-show/MainShow.vue";
 import Vuex from "@/views/vuex/Vuex.vue";
+import store from "@/store";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -37,6 +12,9 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/vuex",
     name: "Vuex",
+    meta: {
+      title: "测试"
+    },
     component: Vuex
   },
   {
@@ -45,9 +23,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/axios/Axios.vue") // 懒加载组件
   }
 ];
-// 引入modules文件夹的路由js
+// 引入modules文件夹的路由ts
 const files = import.meta.globEager("./modules/*.ts");
-console.log("router files:::", files);
 
 Object.keys(files).forEach((key) => {
   if (Object.prototype.hasOwnProperty.call(files, key)) {
@@ -58,6 +35,51 @@ Object.keys(files).forEach((key) => {
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+});
+
+router.beforeEach(async (to, from, next) => {
+  interface passPath {
+    path: string;
+  }
+  const tabArr = [
+    {
+      path: "/"
+    },
+    {
+      path: "/home"
+    },
+    {
+      path: "/classify"
+    },
+    {
+      path: "/map"
+    },
+    {
+      path: "/mine"
+    }
+  ];
+  const isFlag:passPath = tabArr.find((item) => to.path === item.path);
+  // 判断是否在一级页面: 一级页面不清楚tab栏
+  if (isFlag) {
+    store.commit("allowTabShow", true);
+  } else {
+    store.commit("allowTabShow", false);
+  }
+  // 判断目标路由是否需要登录验证
+  // if (to.meta.requireAuth) {
+  //   // if (Vue.ls.get(ACCESS_TOKEN)) {
+  //   //   next()
+  //   // } else {
+  //   //   next({ path: '/login', query: { redirect: to.fullPath } })
+  //   // }
+  // } else {
+  next();
+  // }
+  if (to.meta.title) {
+    // 设置标题
+    const doc:any = document;
+    doc.title = to.meta.title;
+  }
 });
 
 export default router;

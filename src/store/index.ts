@@ -1,7 +1,8 @@
 import { createStore } from "vuex";
 
 const defaultState = {
-  count: 0
+  tabShow: false,
+  date: new Date()
 };
 
 // Create a new store instance.
@@ -10,18 +11,19 @@ export default createStore({
     return defaultState;
   },
   mutations: {
-    increment(state: typeof defaultState) {
+    allowTabShow(state: typeof defaultState, show:boolean) {
       // state.count = state.count+1;
+      state.tabShow = show;
     }
   },
   actions: {
-    increment(context) {
+    allowTabShow(context) {
       context.commit("increment");
     }
   },
   getters: {
-    double(state: typeof defaultState) {
-      return 2 * state.count;
+    tabShow(state: typeof defaultState) {
+      return state.tabShow;
     }
   }
 });
